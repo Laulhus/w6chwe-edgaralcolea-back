@@ -2,7 +2,7 @@
   "name": "back",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node .",
     "start-dev": "nodemon . -q"
@@ -32,13 +32,14 @@
     "express": "^4.17.3",
     "i": "^0.3.7",
     "jest": "^27.5.1",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "npm": "^8.5.1"
   },
   "jest": {
     "collectCoverageFrom": [
-      "./**/*.js",
-      "./**/*.test.js"
+      "src/**/*.js",
+      "src/**/*.test.js"
     ]
   }
 }
