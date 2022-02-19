@@ -11,7 +11,8 @@ const generalError = (err, req, res, next) => {
   debug(chalk.red("General error catched"));
   const errorCode = err.code ?? 500;
   const errorMessage = err.code ? err.message : "Internal server error";
-  res.status(errorCode).json({ error: true, message: errorMessage });
+  res.status(errorCode);
+  res.json({ error: true, message: errorMessage });
 };
 
 module.exports = { notFoundError, generalError };

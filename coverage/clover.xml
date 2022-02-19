@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1645268176581" clover="3.2.0">
-  <project timestamp="1645268176582" name="All files">
-    <metrics statements="28" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="1" elements="38" coveredelements="8" complexity="0" loc="28" ncloc="28" packages="2" files="2" classes="2"/>
+<coverage generated="1645268964918" clover="3.2.0">
+  <project timestamp="1645268964918" name="All files">
+    <metrics statements="29" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="2" elements="39" coveredelements="18" complexity="0" loc="29" ncloc="29" packages="2" files="2" classes="2"/>
     <package name="server">
       <metrics statements="17" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="index.js" path="D:\Coding\ISDI Coders\Daily Challenges\Week 6\challenge-weekend\back\src\server\index.js">
@@ -26,20 +26,21 @@
       </file>
     </package>
     <package name="server.middlewares">
-      <metrics statements="11" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <file name="errors.js" path="D:\Coding\ISDI Coders\Daily Challenges\Week 6\challenge-weekend\back\src\server\middlewares\errors.js">
-        <metrics statements="11" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
     </package>
   </project>
