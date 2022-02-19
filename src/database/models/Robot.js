@@ -25,7 +25,6 @@ const robotSchema = new Schema({
       },
       message: (props) => `${props.value} is not a valid date format`,
     },
-    required: true,
   },
 });
 
