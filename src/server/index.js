@@ -3,6 +3,7 @@ const debug = require("debug")("myRobots:server");
 const chalk = require("chalk");
 const morgan = require("morgan");
 const { default: helmet } = require("helmet");
+const cors = require("cors");
 const { generalError, notFoundError } = require("./middlewares/errors");
 const robotsRouter = require("./routers/robotsRouter");
 
@@ -19,6 +20,7 @@ const initializeServer = (port) =>
   });
 
 app.use(morgan("dev"));
+app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
@@ -28,7 +30,7 @@ app.get("/", (req, res) => {
   
   Here are the endpoints you can use:
 
-  GET: /robots/all -- Shows a list of all robots`);
+  GET: /robots -- Shows a list of all robots`);
   res.end();
 });
 
