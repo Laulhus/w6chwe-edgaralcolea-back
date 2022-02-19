@@ -42,7 +42,7 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "src/**/*.test.js",
-      "!src/index.js"
+      "!src/**/index.js"
     ]
   }
 }
