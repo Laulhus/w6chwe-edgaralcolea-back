@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node .",
-    "start-dev": "nodemon . -q"
+    "start-dev": "nodemon . -q",
+    "test": "jest --watchAll",
+    "test-coverage": "jest --watchAll --coverage"
   },
   "repository": {
     "type": "git",
@@ -39,7 +41,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js",
-      "src/**/*.test.js"
+      "src/**/*.test.js",
+      "!src/**/index.js"
     ]
   }
 }
