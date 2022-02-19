@@ -1,8 +1,10 @@
 const chalk = require("chalk");
 const debug = require("debug")("myRobots:server:middlewares:errors");
 
-const notFoundError = (req, res) =>
-  res.status(404).json({ error: true, message: "Resource not found." });
+const notFoundError = (req, res) => {
+  res.status(404);
+  res.json({ error: true, message: "Resource not found" });
+};
 
 // eslint-disable-next-line no-unused-vars
 const generalError = (err, req, res, next) => {
