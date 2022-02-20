@@ -5,6 +5,9 @@ const robotSchema = new Schema({
     type: String,
     required: true,
   },
+  img: {
+    type: String,
+  },
   speed: {
     type: Number,
     min: [0, "speed can't be less than 0, got {VALUE}"],
