@@ -33,9 +33,15 @@ const createRobot = async (req, res, next) => {
   try {
     const newRobot = await Robot.create(req.body);
     debug(newRobot);
-    res.json(newRobot);
+    if (newRobot) {
+      res.json(newRobot);
+    } else {
+      const error = new Error("Invalid data format");
+      error.code = 403;
+      next(error);
+    }
   } catch (error) {
-    error.code = 403;
+    error.code = 400;
     next(error);
   }
 };

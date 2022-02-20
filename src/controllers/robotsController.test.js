@@ -121,5 +121,25 @@ describe("Given a createRobot controller", () => {
       expect(Robot.create).toHaveBeenCalled();
       expect(res.json).toHaveBeenCalledWith(newRobot);
     });
+
+    test("Then if the data format is invalid it should call next with an error", async () => {
+      const res = {
+        json: jest.fn(),
+      };
+      const next = jest.fn();
+
+      const req = {
+        body: {
+          name: "Create test",
+          speed: 7,
+        },
+      };
+
+      Robot.create = jest.fn().mockResolvedValue(null);
+
+      await createRobot(req, res, next);
+
+      expect(next).toHaveBeenCalled();
+    });
   });
 });
