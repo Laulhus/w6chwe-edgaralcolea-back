@@ -34,7 +34,7 @@ describe("Given a getAllRobots controller", () => {
 
 describe("Given a deleteRobotController", () => {
   describe("When it receives a response", () => {
-    test("Then it should call method json with an object", async () => {
+    test("Then it should call method json with an object containing the ID", async () => {
       const req = {
         params: {
           id: "7854f1c",
@@ -50,11 +50,13 @@ describe("Given a deleteRobotController", () => {
         speed: 2,
         endurance: 1,
       };
-      Robot.findByIdAndDelete = jest.fn().mockResolvedValue(robot.id);
+      const expectedResponse = { id: robot.id };
+
+      Robot.findByIdAndDelete = jest.fn().mockResolvedValue(robot);
 
       await deleteRobot(req, res, next);
 
-      expect(res.json).toHaveBeenCalledWith(robot.id);
+      expect(res.json).toHaveBeenCalledWith(expectedResponse);
     });
 
     test("Then if the robot doesn't exist it should call next method with a not found error", async () => {
