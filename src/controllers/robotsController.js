@@ -8,15 +8,14 @@ const getAllRobots = async (req, res) => {
 const deleteRobot = async (req, res, next) => {
   const { id } = req.params;
   try {
-    await Robot.findByIdAndDelete(id, (err, docs) => {
-      if (err) {
-        const error = new Error("Robot not found");
-        error.code = 404;
-        next(error);
-      } else {
-        res.json(docs.id);
-      }
-    });
+    const deletedId = await Robot.findByIdAndDelete(id);
+    if (deletedId) {
+      res.json(deletedId);
+    } else {
+      const error = new Error("Robot not found");
+      error.code = 404;
+      next(error);
+    }
   } catch (error) {
     error.code = 400;
     next(error);
