@@ -1,3 +1,4 @@
+const debug = require("debug")("myRobots:src:controllers");
 const Robot = require("../database/models/Robot");
 
 const getAllRobots = async (req, res) => {
@@ -6,11 +7,12 @@ const getAllRobots = async (req, res) => {
 };
 
 const deleteRobot = async (req, res, next) => {
-  const { id } = req.params;
+  const { idRobot } = req.params;
   try {
-    const deletedId = await Robot.findByIdAndDelete(id);
-    if (deletedId) {
-      res.json(deletedId);
+    debug("Im here");
+    const robot = await Robot.findByIdAndDelete(idRobot);
+    if (robot) {
+      res.json({ id: robot.id });
     } else {
       const error = new Error("Robot not found");
       error.code = 404;
