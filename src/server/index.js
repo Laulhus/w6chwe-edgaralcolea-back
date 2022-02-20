@@ -30,7 +30,9 @@ app.get("/", (req, res) => {
   
   Here are the endpoints you can use:
 
-  GET: /robots -- Shows a list of all robots`);
+  GET: /robots -- Shows a list of all robots
+  
+  DELETE: /robots/delete:id -- Deletes the robot with sent ID`);
   res.end();
 });
 

@@ -7,7 +7,7 @@
     "start": "node .",
     "start-dev": "nodemon . -q",
     "test": "jest",
-    "test-coverage": "jest --watchAll --coverage",
+    "coverage": "jest --watchAll --coverage",
     "prepare": "husky install"
   },
   "repository": {
