@@ -27,7 +27,7 @@ describe("Given a getAllRobots controller", () => {
       await getAllRobots(null, res);
 
       expect(Robot.find).toHaveBeenCalled();
-      expect(res.json).toHaveBeenCalledWith({ robots });
+      expect(res.json).toHaveBeenCalledWith(robots);
     });
   });
 });
