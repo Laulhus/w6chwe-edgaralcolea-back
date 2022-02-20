@@ -15,7 +15,6 @@ const getRobot = async (req, res) => {
 const deleteRobot = async (req, res, next) => {
   const { idRobot } = req.params;
   try {
-    debug("Im here");
     const robot = await Robot.findByIdAndDelete(idRobot);
     if (robot) {
       res.json({ id: robot.id });
@@ -30,4 +29,21 @@ const deleteRobot = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllRobots, getRobot, deleteRobot };
+const createRobot = async (req, res, next) => {
+  try {
+    const newRobot = await Robot.create(req.body);
+    debug(newRobot);
+    if (newRobot) {
+      res.json(newRobot);
+    } else {
+      const error = new Error("Invalid data format");
+      error.code = 403;
+      next(error);
+    }
+  } catch (error) {
+    error.code = 400;
+    next(error);
+  }
+};
+
+module.exports = { getAllRobots, getRobot, deleteRobot, createRobot };

@@ -34,7 +34,9 @@ app.get("/", (req, res) => {
 
   GET: /robots/:idRobot -- Shows robot with sent ID
   
-  DELETE: /robots/delete:id -- Deletes the robot with sent ID`);
+  DELETE: /robots/delete:id -- Deletes the robot with sent ID
+  
+  POST: /robots/create -- Creates a new robot`);
   res.end();
 });
 

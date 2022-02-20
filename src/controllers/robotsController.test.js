@@ -1,5 +1,9 @@
 const Robot = require("../database/models/Robot");
-const { getAllRobots, deleteRobot } = require("./robotsController");
+const {
+  getAllRobots,
+  deleteRobot,
+  createRobot,
+} = require("./robotsController");
 
 jest.mock("../database/models/Robot");
 
@@ -85,6 +89,55 @@ describe("Given a deleteRobotController", () => {
       Robot.findByIdAndDelete = jest.fn().mockResolvedValue(error);
 
       await deleteRobot(req, null, next);
+
+      expect(next).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a createRobot controller", () => {
+  describe("When it receives a request and a reponse", () => {
+    test("Then it should call the response json method with a new robot", async () => {
+      const res = {
+        json: jest.fn(),
+      };
+      const req = {
+        body: {
+          name: "Create test",
+          speed: 7,
+        },
+      };
+
+      const newRobot = {
+        name: "Create test",
+        speed: 7,
+        id: 123,
+      };
+
+      Robot.create = jest.fn().mockResolvedValue(newRobot);
+
+      await createRobot(req, res);
+
+      expect(Robot.create).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalledWith(newRobot);
+    });
+
+    test("Then if the data format is invalid it should call next with an error", async () => {
+      const res = {
+        json: jest.fn(),
+      };
+      const next = jest.fn();
+
+      const req = {
+        body: {
+          name: "Create test",
+          speed: 7,
+        },
+      };
+
+      Robot.create = jest.fn().mockResolvedValue(null);
+
+      await createRobot(req, res, next);
 
       expect(next).toHaveBeenCalled();
     });
