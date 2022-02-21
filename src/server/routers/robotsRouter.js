@@ -5,12 +5,13 @@ const {
   getRobot,
   createRobot,
 } = require("../../controllers/robotsController");
+const auth = require("../middlewares/auth");
 
 const robotsRouter = express.Router();
 
 robotsRouter.get("/", getAllRobots);
 robotsRouter.get("/:idRobot", getRobot);
-robotsRouter.delete("/delete/:idRobot", deleteRobot);
-robotsRouter.post("/create", createRobot);
+robotsRouter.delete("/delete/:idRobot", auth, deleteRobot);
+robotsRouter.post("/create", auth, createRobot);
 
 module.exports = robotsRouter;
