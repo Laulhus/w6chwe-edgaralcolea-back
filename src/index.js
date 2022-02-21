@@ -1,7 +1,6 @@
 require("dotenv").config();
 const debug = require("debug")("myRobots:root");
 const chalk = require("chalk");
-const bcrypt = require("bcrypt");
 const connectDatabase = require("./database");
 const initializeServer = require("./server");
 
