@@ -1,12 +1,13 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { default: User } = require("../database/models/User");
+const User = require("../database/models/User");
 
 const loginUser = async (req, res, next) => {
   const { userName, password } = req.body;
-  const user = await User.findOne({ userName });
+  const user = await User.findOne(userName);
   if (!user) {
     const error = new Error("User not found");
+    error.code = 404;
     next(error);
   } else {
     const rightPassword = await bcrypt.compare(password, user.password);
@@ -21,4 +22,4 @@ const loginUser = async (req, res, next) => {
   }
 };
 
-export default loginUser;
+module.exports = loginUser;

@@ -17,8 +17,3 @@ const databasebUrl = process.env.DB_URL;
     debug(chalk.redBright(`Error: ${error.message}`));
   }
 })();
-
-(async () => {
-  const encryptedPassword = await bcrypt.hash("olakease", 10);
-  debug(encryptedPassword);
-})();

@@ -6,7 +6,7 @@ const { default: helmet } = require("helmet");
 const cors = require("cors");
 const { generalError, notFoundError } = require("./middlewares/errors");
 const robotsRouter = require("./routers/robotsRouter");
-const { default: loginUser } = require("../controllers/loginUser");
+const loginUser = require("../controllers/loginUser");
 
 const app = express();
 
