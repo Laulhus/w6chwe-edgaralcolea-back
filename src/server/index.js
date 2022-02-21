@@ -41,6 +41,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/robots", robotsRouter);
+app.use("/login");
 
 app.use(notFoundError);
 app.use(generalError);
