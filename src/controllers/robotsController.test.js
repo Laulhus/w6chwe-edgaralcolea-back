@@ -124,7 +124,7 @@ describe("Given a deleteRobotController", () => {
 });
 
 describe("Given a createRobot controller", () => {
-  describe("When it receives a request and a reponse", () => {
+  describe("When it receives a request and a response", () => {
     test("Then it should call the response json method with a new robot", async () => {
       const res = {
         json: jest.fn(),
