@@ -43,13 +43,14 @@
     "mongoose": "^6.2.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
-    "npm": "^8.5.1"
+    "npm": "^8.5.1",
+    "supertest": "^6.2.2"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/**/*.test.js",
-      "!src/index.js"
+      "!src/**/index.js"
     ],
     "setupFiles": [
       "<rootDir>/.jest/setEnvVars.js"
