@@ -1,4 +1,5 @@
 require("dotenv").config();
+const bcrypt = require("bcrypt");
 const debug = require("debug")("myRobots:root");
 const chalk = require("chalk");
 const connectDatabase = require("./database");
@@ -15,4 +16,9 @@ const databasebUrl = process.env.DB_URL;
   } catch (error) {
     debug(chalk.redBright(`Error: ${error.message}`));
   }
+})();
+
+(async () => {
+  const password = await bcrypt.hash("yeah", 10);
+  debug(password);
 })();
