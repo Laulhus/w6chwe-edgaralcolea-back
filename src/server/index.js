@@ -1,6 +1,4 @@
 const express = require("express");
-const debug = require("debug")("myRobots:server");
-const chalk = require("chalk");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
@@ -9,16 +7,6 @@ const robotsRouter = require("./routers/robotsRouter");
 const loginUser = require("../controllers/loginUser");
 
 const app = express();
-
-const initializeServer = (port) =>
-  new Promise((resolve, reject) => {
-    const server = app.listen(port, () => {
-      debug(chalk.greenBright(`Server listening on http://localhost:${port}`));
-      resolve();
-    });
-
-    server.on("error", (error) => reject(error));
-  });
 
 app.use(morgan("dev"));
 app.use(cors());
@@ -47,4 +35,4 @@ app.post("/login", loginUser);
 app.use(notFoundError);
 app.use(generalError);
 
-module.exports = initializeServer;
+module.exports = app;

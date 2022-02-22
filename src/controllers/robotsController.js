@@ -1,4 +1,3 @@
-const debug = require("debug")("myRobots:src:controllers");
 const Robot = require("../database/models/Robot");
 
 const getAllRobots = async (req, res) => {
