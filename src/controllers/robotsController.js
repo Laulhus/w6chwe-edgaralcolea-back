@@ -1,4 +1,3 @@
-const debug = require("debug")("myRobots:src:controllers");
 const Robot = require("../database/models/Robot");
 
 const getAllRobots = async (req, res) => {
@@ -32,7 +31,6 @@ const deleteRobot = async (req, res, next) => {
 const createRobot = async (req, res, next) => {
   try {
     const newRobot = await Robot.create(req.body);
-    debug(newRobot);
     if (newRobot) {
       res.json(newRobot);
     } else {

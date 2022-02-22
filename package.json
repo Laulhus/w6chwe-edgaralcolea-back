@@ -40,16 +40,21 @@
     "i": "^0.3.7",
     "jest": "^27.5.1",
     "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.4.0",
     "mongoose": "^6.2.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
-    "npm": "^8.5.1"
+    "npm": "^8.5.1",
+    "supertest": "^6.2.2"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/**/*.test.js",
       "!src/**/index.js"
+    ],
+    "setupFiles": [
+      "<rootDir>/.jest/setEnvVars.js"
     ]
   }
 }

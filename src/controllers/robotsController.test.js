@@ -3,6 +3,7 @@ const {
   getAllRobots,
   deleteRobot,
   createRobot,
+  getRobot,
 } = require("./robotsController");
 
 jest.mock("../database/models/Robot");
@@ -36,8 +37,35 @@ describe("Given a getAllRobots controller", () => {
   });
 });
 
+describe("Given a getRobot controller", () => {
+  describe("When it receives a response and a request containing the id '7854f1c'", () => {
+    test("Then it should call the response json method with a robot", async () => {
+      const res = {
+        json: jest.fn(),
+      };
+      const req = {
+        params: {
+          id: "7854f1c",
+        },
+      };
+      const robot = {
+        id: "7854f1c",
+        name: "Dummy",
+        speed: 2,
+        endurance: 1,
+      };
+      Robot.findById = jest.fn().mockResolvedValue(robot);
+
+      await getRobot(req, res);
+
+      expect(Robot.find).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalledWith(robot);
+    });
+  });
+});
+
 describe("Given a deleteRobotController", () => {
-  describe("When it receives a response", () => {
+  describe("When it receives a response and a request containing id '7854f1c", () => {
     test("Then it should call method json with an object containing the ID", async () => {
       const req = {
         params: {
@@ -96,7 +124,7 @@ describe("Given a deleteRobotController", () => {
 });
 
 describe("Given a createRobot controller", () => {
-  describe("When it receives a request and a reponse", () => {
+  describe("When it receives a request and a response", () => {
     test("Then it should call the response json method with a new robot", async () => {
       const res = {
         json: jest.fn(),
@@ -140,6 +168,28 @@ describe("Given a createRobot controller", () => {
       await createRobot(req, res, next);
 
       expect(next).toHaveBeenCalled();
+    });
+
+    test("Then if the creation fails it should call next with an error", async () => {
+      const res = {
+        json: jest.fn(),
+      };
+      const next = jest.fn();
+
+      const req = {
+        body: {
+          name: "Create test",
+          speed: 7,
+        },
+      };
+      const error = {
+        code: 400,
+      };
+      Robot.create = jest.fn().mockRejectedValue(error);
+
+      await createRobot(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });
