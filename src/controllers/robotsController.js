@@ -32,7 +32,6 @@ const deleteRobot = async (req, res, next) => {
 const createRobot = async (req, res, next) => {
   try {
     const newRobot = await Robot.create(req.body);
-    debug(newRobot);
     if (newRobot) {
       res.json(newRobot);
     } else {
